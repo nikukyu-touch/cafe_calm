@@ -258,10 +258,61 @@ main .container {
   justify-content: space-evenly;
 }
 
-.sns h1 {
+.acd-check {
+  display: none;
+}
+.acd-label {
+  display: block;
+  font-size: 3rem;
+  font-weight: bold;
+  width: 375px;
+  margin: 0;
+  /* cursor: pointer; */
+  position: relative;
+}
+.acd-label::before,.acd-label:after {
+  display: none;
+  content: '';
+  position: absolute;
+  right: 2em;
+  top: calc(50% - .1em);
+  line-height: 1;
+  width: .6em;
+  height: 0.1em;
+  background: currentColor;
+  border-radius: 0.1em;
+}
+.acd-label:after {
+  transform: rotate(-90deg);
+}
+.acd-label::before,.acd-label:after {
+  transition: .5s;
+}
+.acd-check:checked + .acd-label:before{
+  transform: rotate(90deg);
+  opacity: 0;
+}
+.acd-check:checked + .acd-label:after {
+  transform: rotate(0deg);
+}
+.acd-content {
+  display: block;
+  /* height: 620px; */
+  opacity: 1;
+  overflow: hidden;
+  visibility: visible;
+  transition: .5s;
+}
+.acd-check:checked + .acd-label + .acd-content {
+  height: 620px;
+  opacity: 1;
+  visibility: visible;
+}
+
+/* .sns h1 {
   font-size: 3rem;
   margin: 0;
-}
+} */
 
 .twitter .goto-top {
   display: none;
@@ -416,6 +467,18 @@ footer i {
   .sns {
     flex-wrap: wrap;
   }
+  .acd-label {
+    cursor: pointer;
+  }
+  .acd-label::before,.acd-label:after {
+    display: block;
+  }
+  .acd-content {
+    display: block;
+    height: 0;
+    opacity: 0;
+    visibility: hidden;
+  }
 
   .goto-top a {
     animation: flicker 1s infinite alternate ease-in-out;
@@ -553,6 +616,10 @@ footer i {
 
   .sns {
     margin: 3rem 0 2rem;
+  }
+  .acd-label{
+    width: 320px;
+    margin: 0 auto;
   }
 
   .twitter .goto-top {
