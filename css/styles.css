@@ -272,7 +272,7 @@ main .container {
   /* cursor: pointer; */
   position: relative;
 }
-.acd-label::before,.acd-label:after {
+.acd-label:before, .acd-label:after {
   display: none;
   content: '';
   position: absolute;
@@ -285,17 +285,20 @@ main .container {
   border-radius: 0.1em;
 }
 .acd-label:after {
-  transform: rotate(-90deg);
+  transform: rotate(90deg);
 }
-.acd-label::before,.acd-label:after {
+.acd-label:before, .acd-label:after {
   transition: .5s;
 }
-.acd-check:checked + .acd-label:before{
-  transform: rotate(90deg);
-  opacity: 0;
+.acd-check:checked ~ .acd-label:before{
+  animation: none;
+  /* transform: rotate(90deg); */
+  /* opacity: 0; */
 }
-.acd-check:checked + .acd-label:after {
-  transform: rotate(0deg);
+.acd-check:checked ~ .acd-label:after {
+  animation: none;
+  /* transform: rotate(180deg); */
+  opacity: 0;
 }
 .acd-content {
   display: block;
@@ -305,18 +308,13 @@ main .container {
   visibility: visible;
   transition: .5s;
 }
-.acd-check:checked + .acd-label + .acd-content {
+.acd-check:checked ~ .acd-label + .acd-content {
   height: 620px;
   opacity: 1;
   visibility: visible;
 }
 
-/* .sns h1 {
-  font-size: 3rem;
-  margin: 0;
-} */
-
-.twitter .goto-top {
+.facebook .goto-top {
   display: none;
 }
 
@@ -472,8 +470,27 @@ footer i {
   .acd-label {
     cursor: pointer;
   }
-  .acd-label::before,.acd-label:after {
+  .acd-label:before, .acd-label:after {
     display: block;
+  }
+  /* 回転アニメさせるとクリック後の回転効果が無くなる↓ */
+  .acd-label:before {
+    animation: RotateB 6s linear infinite forwards;
+  }
+  .acd-label:after {
+    animation: RotateA 6s linear infinite forwards;
+  }
+  @keyframes RotateB {
+    40% {transform: rotate(0);}
+    50% {transform: rotate(180deg);}
+    90% {transform: rotate(180deg);}
+    100% {transform: rotate(360deg);}
+  }
+  @keyframes RotateA {
+    40% {transform: rotate(90deg);}
+    50% {transform: rotate(270deg);}
+    90% {transform: rotate(270deg);}
+    100% {transform: rotate(450deg);}
   }
   .acd-content {
     display: block;
@@ -624,19 +641,23 @@ footer i {
     margin: 0 auto;
   }
 
-  .twitter .goto-top {
-    margin-top: 5px;
+  #acd-check2:checked ~ .goto-top {
     display: block;
-    text-align: left;
-  }
-
-  .sns .twitter .goto-top a {
-    font-size: 1rem;
   }
 
   .facebook {
-    margin-top: 1rem;
+    /* margin-top: 1rem; */
     width: 100%;
+  }
+
+  .facebook .goto-top {
+    margin-bottom: 1em;
+    width: 80%;
+    text-align: left;
+  }
+
+  .sns .facebook .goto-top a {
+    font-size: 1rem;
   }
 
   .facebook iframe {
