@@ -134,10 +134,12 @@ header .link ul img {
   padding-left: 1em;
 }
 
-.explanation > p:last-of-type {
+.explanation > p:nth-last-of-type(-n+2) {
   font-size: 1.6rem;
+  line-height: 1.3;
   padding-left: 3rem;
   margin: 0;
+  text-align: left;
 }
 
 main .backgrnd {
@@ -410,6 +412,9 @@ footer i {
     font-size: 2.4rem;
     margin: 1.2rem 0;
   }
+  .explanation > p:nth-last-of-type(-n+2) {
+    font-size: 1.4rem;
+  }
 
   #inside .pic  {
     height: 420px;
@@ -581,8 +586,9 @@ footer i {
     font-size: 1.6rem;
     margin: .5rem 0;
   }
-  .explanation > p:last-of-type {
-    font-size: 1rem;
+  .explanation > p:nth-last-of-type(-n+2) {
+    font-size: 1.2rem;
+    line-height: 1.4;
     padding-left: 0;
   }
 

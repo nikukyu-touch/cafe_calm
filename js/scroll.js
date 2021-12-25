@@ -7,13 +7,16 @@
 
   function checkPoint() {
     const triggerBottom = window.innerHeight / 3 * 2;
-    // console.log(triggerBottom);
+    console.log(triggerBottom);
 
     anmelm.forEach(Scroll => {
       const boxTop = Scroll.getBoundingClientRect().top;
 
       if(boxTop < triggerBottom) {
         Scroll.classList.add('show')
+      // 下の remove の処理でイベント前の状態に戻す
+      // } else {
+      //   Scroll.classList.remove('show')
       }
     })
   }
